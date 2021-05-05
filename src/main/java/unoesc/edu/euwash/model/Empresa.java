@@ -1,12 +1,27 @@
 package unoesc.edu.euwash.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "empresas")
 public class Empresa {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pk_empresas")
+
 	private int id;
+	@Column(name = "razao_social")
 	private String razaoSocial;
+	@Column(name = "nome_fantasia")
 	private String nomeFantasia;
+	@Column
 	private String cnpj;
-	
-	
+
 	
 	public int getId() {
 		return id;
