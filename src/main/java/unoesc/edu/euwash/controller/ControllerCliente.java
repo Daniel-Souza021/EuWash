@@ -44,7 +44,7 @@ public class ControllerCliente  extends HttpServlet{
 		}
 
 		if (req.getParameter("updateProfessor") != null) {
-			int pId = Integer.parseInt(req.getParameter("updateProfessor"));
+			int pId = Integer.parseInt(req.getParameter("updateCliente"));
 			c = clientes.get(pId);
 			
 			c.setNome(req.getParameter("txtnome"));
