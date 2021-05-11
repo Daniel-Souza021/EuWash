@@ -4,13 +4,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class Cliente implements Serializable{
+public class Cliente{
 	
+		private int id;
 		private String nome;
 		private String sobrenome;
 		private String telefone;
-		private Date dataNasc;
+		private String dataNasc;
 
+		
+		public int getId() {
+			return id;
+		}
+		
+		public void setId(int id) {
+			this.id = id;
+		}
 		
 		public String getSobrenome() {
 			return sobrenome;
@@ -20,11 +29,11 @@ public class Cliente implements Serializable{
 			this.sobrenome = sobrenome;
 		}
 
-		public Date getDataNasc() {
+		public String getDataNasc() {
 			return dataNasc;
 		}
 
-		public void setDataNasc(Date dataNasc) {
+		public void setDataNasc(String dataNasc) {
 			
 			this.dataNasc = dataNasc;
 		}
@@ -37,22 +46,6 @@ public class Cliente implements Serializable{
 			this.nome = nome;
 		}
 
-		public String getDataNasFormated() {
-			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-			if (this.dataNasc == null)
-				return format.format(new Date());
-			
-			return format.format(this.dataNasc);
-		}
-		
-		public String getDataNasDateInput() {
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			if (this.dataNasc == null)
-				return format.format(new Date());
-			
-			return format.format(this.dataNasc);
-		}
-
 		public String getTelefone() {
 			return telefone;
 		}
@@ -60,8 +53,5 @@ public class Cliente implements Serializable{
 		public void setTelefone(String telefone) {
 			this.telefone = telefone;
 		}
-		
-		
-
 	}
 

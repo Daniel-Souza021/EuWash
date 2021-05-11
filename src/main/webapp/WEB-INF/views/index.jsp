@@ -11,7 +11,7 @@
 <p> Cadastros disponíveis</p>
 
 <li><a href="empresa"> Cadastro Empresa</li>
-<li><a href="ClienteView.jsp"> Cadastro Cliente</li>
+<li><a href="cliente"> Cadastro Cliente</li>
 <li><a href="servico"> Cadastro Serviço</li>
 
 

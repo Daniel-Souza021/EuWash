@@ -8,30 +8,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Clientes</title>
+<title>Servicos</title>
 </head>
 <body>
 
 	<div
 		style="position: relative; display: inline-block; width: 50%; margin-bottom: 40px; margin-left: 15%; border-collapse: collapse;">
-		<c:if test="${listaCliente.size() > 0}">
+		<c:if test="${listaServico.size() > 0}">
 			<table border="2" width="70%" cellpadding="2">
 				<tr>
-					<th>Nome</th>
-					<th>Sobrenome</th>
-					<th>Telefone</th>
-					<th>Data Nascimento</th>	
+					<th>Descrição</th>
+					<th>Preço</th>
+					<th>Categoria</th>
 					<th>Edit</th>
 					<th>Delete</th>	
 				</tr>
-				<c:forEach var="c" items="${listaCliente}">
+				<c:forEach var="s" items="${listaServico}">
 					<tr>
-						<td>${c.nome}</td>
-						<td>${c.sobrenome}</td>
-						<td>${c.telefone}</td>
-						<td>${c.dataNasc}</td>
-						<td><a href="clienteEdit/${c.id}">Edit</a></td>
-						<td><a href="clienteDelete/${c.id}">Delete</a></td>
+						<td>${s.descricao}</td>
+						<td>${s.preco}</td>
+						<td>${s.categoria}</td>
+						<td><a href="servicoEdit/${s.id}">Edit</a></td>
+						<td><a href="servicoDelete/${s.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -40,27 +38,22 @@
 
 	<div
 		style="position: relative; display: inline-block; width: 50%; margin-bottom: 40px; margin-left: 15%; border-collapse: collapse;">
-				<form action="/EuWash/clienteSave" method="POST" modelAttribute="cliente">
-					<form:hidden path="cliente.id" />
+				<form action="/EuWash/servicoSave" method="POST" modelAttribute="servico">
+					<form:hidden path="servico.id" />
 					<p>
-						Nome:
-						<form:input path="cliente.nome" />
+						Descrição:
+						<form:input path="servico.descricao" />
 
 					</p>
 
 					<p>
-						Sobrenome:
-						<form:input path="cliente.sobrenome" />
+						Preço:
+						<form:input path="servico.preco" />
 
 					</p>
 					<p>
-						Telefone:
-						<form:input path="cliente.telefone" />
-
-					</p>
-					<p>
-						Data Nascimento:
-						<form:input path="cliente.dataNasc" />
+						Categoria:
+						<form:input path="servico.categoria" />
 
 					</p>
 					

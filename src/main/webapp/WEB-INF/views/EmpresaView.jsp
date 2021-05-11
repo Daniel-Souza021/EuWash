@@ -8,30 +8,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Clientes</title>
+<title>Empresas</title>
 </head>
 <body>
 
 	<div
 		style="position: relative; display: inline-block; width: 50%; margin-bottom: 40px; margin-left: 15%; border-collapse: collapse;">
-		<c:if test="${listaCliente.size() > 0}">
+		<c:if test="${listaEmpresa.size() > 0}">
 			<table border="2" width="70%" cellpadding="2">
 				<tr>
-					<th>Nome</th>
-					<th>Sobrenome</th>
-					<th>Telefone</th>
-					<th>Data Nascimento</th>	
+					<th>Razão Social</th>
+					<th>Nome Fantasia</th>
+					<th>CNPJ</th>
 					<th>Edit</th>
 					<th>Delete</th>	
 				</tr>
-				<c:forEach var="c" items="${listaCliente}">
+				<c:forEach var="e" items="${listaEmpresa}">
 					<tr>
-						<td>${c.nome}</td>
-						<td>${c.sobrenome}</td>
-						<td>${c.telefone}</td>
-						<td>${c.dataNasc}</td>
-						<td><a href="clienteEdit/${c.id}">Edit</a></td>
-						<td><a href="clienteDelete/${c.id}">Delete</a></td>
+						<td>${e.razaoSocial}</td>
+						<td>${e.nomeFantasia}</td>
+						<td>${e.cnpj}</td>
+						<td><a href="/EuWash/empresaEdit/${e.id}">Edit</a></td>
+						<td><a href="/EuWash/empresaDelete/${e.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -40,27 +38,22 @@
 
 	<div
 		style="position: relative; display: inline-block; width: 50%; margin-bottom: 40px; margin-left: 15%; border-collapse: collapse;">
-				<form action="/EuWash/clienteSave" method="POST" modelAttribute="cliente">
-					<form:hidden path="cliente.id" />
+				<form action="/EuWash/empresaSave" method="POST" modelAttribute="empresa">
+					<form:hidden path="empresa.id" />
 					<p>
-						Nome:
-						<form:input path="cliente.nome" />
+						Razão Social:
+						<form:input path="empresa.razaoSocial" />
 
 					</p>
 
 					<p>
-						Sobrenome:
-						<form:input path="cliente.sobrenome" />
+						Nome Fantasia:
+						<form:input path="empresa.nomeFantasia" />
 
 					</p>
 					<p>
-						Telefone:
-						<form:input path="cliente.telefone" />
-
-					</p>
-					<p>
-						Data Nascimento:
-						<form:input path="cliente.dataNasc" />
+						CNPJ:
+						<form:input path="empresa.cnpj" />
 
 					</p>
 					
