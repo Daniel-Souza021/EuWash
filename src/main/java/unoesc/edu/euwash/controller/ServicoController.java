@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,72 +13,81 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import unoesc.edu.euwash.DAO.EmpresaDAO;
+import unoesc.edu.euwash.DAO.ServicoDAO;
+import unoesc.edu.euwash.model.Empresa;
 import unoesc.edu.euwash.model.Servico;
 
 
 @Controller
 public class ServicoController {
 	
+	@Autowired
+	private ServicoDAO servicoDao;
+	
+	
+	
 	@RequestMapping(path = "/servico", method = RequestMethod.GET)
 	public String acessoServico(Model model, HttpSession session) {
 		
-		List<Servico> servicos;
-		if (session.getAttribute("listaServico") == null) {
-			servicos = new LinkedList<Servico>();
-			session.setAttribute("listaServico", servicos);
-		} else
-			servicos = (LinkedList<Servico>) session.getAttribute("listaServico");
 		
+	List<Servico> servicos = this.servicoDao.getServicos();
+	
 		model.addAttribute("listaServico", servicos);
 		model.addAttribute("servico", new Servico());
 		
 		return "ServicoView";
 	}
 	
+	
+	
 	@RequestMapping(path = "/servicoSave", method = RequestMethod.POST)
 	public String servicoSave(@ModelAttribute("servico") Servico servico, HttpSession session) {
-		List servicos = (LinkedList<Servico>) session.getAttribute("listaServico");
+		
 		
 		if (servico.getId() == 0) {
-			servicos.add(servico);
-			servico.setId(servicos.size());
+			this.servicoDao.insertServico(servico);
 		} else {
-			Servico s = (Servico) servicos.get(servico.getId() - 1);
-			s.setDescricao(servico.getDescricao());
-			s.setPreco(servico.getPreco());
-			s.setCategoria(servico.getCategoria());
+			this.servicoDao.updateServico(servico);
 		}
 		
-		
-		
+	
 		return "redirect:/servico";
 	}
+	
+	
 	
 	@RequestMapping(value = "/servicoEdit/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable int id, Model model, HttpSession session) {
 		
-		LinkedList<Servico> servicos;
-		servicos = (LinkedList<Servico>) session.getAttribute("listaServico");
-
+	List<Servico> servicos = this.servicoDao.getServicos();
+		
+		Servico s = this.servicoDao.getServicoById(id);
 		model.addAttribute("listaServico", servicos);
-		Servico s = servicos.get(id - 1);
 		model.addAttribute("servico", s);
 		
 		
 		return "ServicoView";
 	}
 	
+
 	@RequestMapping(value = "/servicoDelete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable int id, Model model, HttpSession session) {
 		
-		LinkedList<Servico> servicos;
-		servicos = (LinkedList<Servico>) session.getAttribute("listaServico");
 
-		model.addAttribute("listaServico", servicos);
-		Servico s = servicos.get(id-1 );
-		servicos.remove(id-1);
+		Servico s = this.servicoDao.getServicoById(id);
+		this.servicoDao.deleteServico(s);
+		
 		
 		return "redirect:/servico";
+	}
+	
+	public ServicoDAO getServicoDao() {
+		return servicoDao;
+	}
+
+	public void setServicoDao(ServicoDAO servicoDao) {
+		this.servicoDao = servicoDao;
 	}
 	
 	

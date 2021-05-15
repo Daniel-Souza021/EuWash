@@ -1,10 +1,24 @@
 package unoesc.edu.euwash.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "servicos")
 public class Servico {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pk_servicos")
 	private int id;
+	@Column
 	private String descricao;
+	@Column
 	private String preco;
+	@Column
 	private String categoria;
 	
 	
