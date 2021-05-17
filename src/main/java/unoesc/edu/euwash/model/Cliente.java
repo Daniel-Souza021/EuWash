@@ -3,13 +3,28 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "clientes")
 public class Cliente{
 	
+		@Id
+		@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pk_clientes")
 		private int id;
+		
+		@Column
 		private String nome;
+		@Column
 		private String sobrenome;
+		@Column
 		private String telefone;
+		@Column
 		private String dataNasc;
 
 		

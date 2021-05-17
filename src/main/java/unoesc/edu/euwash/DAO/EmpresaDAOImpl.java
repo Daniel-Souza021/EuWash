@@ -26,8 +26,6 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 		return empresas;
 	}
 
-	
-
 	@Override
 	@Transactional
 	public Empresa getEmpresaById(int id) {

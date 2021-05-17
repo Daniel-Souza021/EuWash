@@ -2,60 +2,55 @@ package unoesc.edu.euwash.DAO;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import unoesc.edu.euwash.model.Servico;
+import unoesc.edu.euwash.model.Cliente;
 
 @Repository
-public class ServicoDAOImpl implements ServicoDAO {
-	
+public class ClienteDAOlmpl implements ClienteDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	
 	@Override
 	@Transactional
-	public List<Servico> getServicos() {
+	public Cliente getClienteById(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		List <Servico> servicos = (List) session.createQuery("FROM Servico").list();
-		return servicos;
-	}
-
-
-	@Override
-	@Transactional
-	public Servico getServicoById(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Servico s = session.get(Servico.class, id);
-		return s;
-	}
-
-
-	@Override
-	@Transactional
-	public void insertServico(Servico servico) {
-		Session session = sessionFactory.getCurrentSession();
-		session.save(servico);
-		
+		Cliente c = session.get(Cliente.class, id);
+		return c;
 	}
 
 	@Override
 	@Transactional
-	public void updateServico(Servico servico) {
+	public List<Cliente> getClientes() {
 		Session session = sessionFactory.getCurrentSession();
-		session.update(servico);
+		List <Cliente> clientes = (List) session.createQuery("FROM cliente").list();
+		return clientes;
 	}
 
 	@Override
 	@Transactional
-	public void deleteServico(Servico servico) {
+	public void insertCliente(Cliente cliente) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(servico);
+		session.save(cliente);
 	}
-	
+
+	@Override
+	@Transactional
+	public void updateCliente(Cliente cliente) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(cliente);	
+	}
+
+	@Override
+	@Transactional
+	public void deleteCliente(Cliente cliente) {
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(cliente);
+	}
 }
