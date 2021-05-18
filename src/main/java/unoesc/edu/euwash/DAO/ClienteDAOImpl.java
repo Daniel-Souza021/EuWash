@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import unoesc.edu.euwash.model.Cliente;
 
 @Repository
-public class ClienteDAOlmpl implements ClienteDAO {
+public class ClienteDAOImpl implements ClienteDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -29,7 +29,7 @@ public class ClienteDAOlmpl implements ClienteDAO {
 	@Transactional
 	public List<Cliente> getClientes() {
 		Session session = sessionFactory.getCurrentSession();
-		List <Cliente> clientes = (List) session.createQuery("FROM cliente").list();
+		List <Cliente> clientes = (List) session.createQuery("FROM Cliente").list();
 		return clientes;
 	}
 

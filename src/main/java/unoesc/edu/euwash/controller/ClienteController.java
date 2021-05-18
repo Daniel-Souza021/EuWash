@@ -1,6 +1,6 @@
 package unoesc.edu.euwash.controller;
 
-import java.util.LinkedList;
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import unoesc.edu.euwash.DAO.ClienteDAO;
 import unoesc.edu.euwash.model.Cliente;
-import unoesc.edu.euwash.model.Empresa;
-import unoesc.edu.euwash.model.Servico;
 
 @Controller
 public class ClienteController {
