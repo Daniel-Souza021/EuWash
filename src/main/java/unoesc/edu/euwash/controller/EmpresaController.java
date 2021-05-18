@@ -1,6 +1,5 @@
 package unoesc.edu.euwash.controller;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;

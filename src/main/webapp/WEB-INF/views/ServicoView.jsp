@@ -28,8 +28,8 @@
 						<td>${s.descricao}</td>
 						<td>${s.preco}</td>
 						<td>${s.categoria}</td>
-						<td><a href="servicoEdit/${s.id}">Edit</a></td>
-						<td><a href="servicoDelete/${s.id}">Delete</a></td>
+						<td><a href="/EuWash/servicoEdit/${s.id}">Edit</a></td>
+						<td><a href="/EuWash/servicoDelete/${s.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</table>

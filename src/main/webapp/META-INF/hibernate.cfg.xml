@@ -6,5 +6,6 @@
 <hibernate-configuration>
     <session-factory>
         <mapping class="unoesc.edu.euwash.model.Empresa"></mapping>
+        <mapping class="unoesc.edu.euwash.model.Servico"></mapping>
     </session-factory>
 </hibernate-configuration>

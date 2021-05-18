@@ -1,6 +1,5 @@
 package unoesc.edu.euwash.controller;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import unoesc.edu.euwash.DAO.EmpresaDAO;
 import unoesc.edu.euwash.DAO.ServicoDAO;
-import unoesc.edu.euwash.model.Empresa;
 import unoesc.edu.euwash.model.Servico;
 
 
