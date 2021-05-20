@@ -1,71 +1,44 @@
 package unoesc.edu.euwash.controller;
 
-
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import unoesc.edu.euwash.DAO.ClienteDAO;
 import unoesc.edu.euwash.model.Cliente;
 
-@Controller
+@ManagedBean(name="clienteMB")
+@RequestScoped
 public class ClienteController {
 	
-	@Autowired
+	@ManagedProperty(value="#{ClienteDAO}")
 	private ClienteDAO clienteDao;
 	
-	@RequestMapping(path = "/cliente", method = RequestMethod.GET)
-	public String acessoServico(Model model, HttpSession session) {
-		
-		List<Cliente> clientes = this.clienteDao.getClientes();
-		
-		model.addAttribute("listaCliente", clientes);
-		model.addAttribute("cliente", new Cliente());
-		
-		return "ClienteView";
-	}
-	
-	@RequestMapping(path = "/clienteSave", method = RequestMethod.POST)
-public String clientesave(@ModelAttribute("cliente") Cliente cliente, HttpSession session) {
-		
-		
+	private Cliente cliente = new Cliente();
+	private List<Cliente> clientes; 
+
+	public void clientesave() {
+
 		if (cliente.getId() == 0) {
 			this.clienteDao.insertCliente(cliente);
 		} else {
 			this.clienteDao.updateCliente(cliente);
 		}
-		
-		
-		return "redirect:/cliente";
+
 	}
-	
-	@RequestMapping(value = "/clienteEdit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable int id, Model model, HttpSession session) {
-		
-		List<Cliente> clientes = this.clienteDao.getClientes();
-			
-			Cliente c = this.clienteDao.getClienteById(id);
-			model.addAttribute("listaCliente", clientes);
-			model.addAttribute("cliente", c);
-				
-		return "ClienteView";
+
+
+	public void edit(int id) {
+
+		this.cliente = this.clienteDao.getClienteById(id);
 	}
-	
-	@RequestMapping(value = "/clienteDelete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable int id, Model model, HttpSession session) {
-		
+
+
+	public void delete(int id) {
+
 		Cliente c = this.clienteDao.getClienteById(id);
 		this.clienteDao.deleteCliente(c);
-		
-		return "redirect:/cliente";
 	}
 
 	public ClienteDAO getClienteDao() {
@@ -75,4 +48,27 @@ public String clientesave(@ModelAttribute("cliente") Cliente cliente, HttpSessio
 	public void setClienteDao(ClienteDAO clienteDao) {
 		this.clienteDao = clienteDao;
 	}
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+	public List<Cliente> getClientes() {
+		this.clientes = clienteDao.getClientes();
+		return clientes;
+	}
+
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+	
+	
 }

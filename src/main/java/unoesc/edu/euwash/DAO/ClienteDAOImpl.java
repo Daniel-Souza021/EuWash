@@ -7,11 +7,11 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import unoesc.edu.euwash.model.Cliente;
 
-@Repository
+@Service(value="ClienteDAO")
 public class ClienteDAOImpl implements ClienteDAO {
 
 	@Autowired
