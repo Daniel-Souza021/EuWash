@@ -12,14 +12,14 @@
 <h:head>
 	<h:form name="breadCrump">
 		<p:breadCrumb> 
-			<p:menuitem value="Categories"/>
+			<p:menuitem value="Categories" url="index.xhtml"/>
 			<p:menuitem value="Empresas"/>	
 		</p:breadCrumb>
 	</h:form>
 </h:head>
 	<p:panel style="width:70%; margin: 20px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{empresaMB.empresas}" scrollable="true"
-			scrollHeight="400">
+			scrollHeight="200">
 			<p:column headerText="Razão Social">
 				<p:outputLabel value="#{p.razaoSocial}" />
 			</p:column>

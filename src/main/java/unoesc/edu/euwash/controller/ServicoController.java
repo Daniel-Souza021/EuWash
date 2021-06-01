@@ -20,7 +20,6 @@ public class ServicoController {
 	private Servico servico = new Servico();
 	private List<Servico> servicos; 
 
-	
 	public void servicosave() {
 
 		if (servico.getId() == 0) {

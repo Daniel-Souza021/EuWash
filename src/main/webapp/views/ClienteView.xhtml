@@ -12,7 +12,7 @@
 <h:head>
 	<h:form name="breadCrump">
 		<p:breadCrumb> 
-			<p:menuitem value="Categories"/>
+			<p:menuitem value="Categories" url="index.xhtml"/>
 			<p:menuitem value="Clientes"/>
 		</p:breadCrumb>
 	</h:form>
@@ -21,7 +21,7 @@
 
 	<p:panel style="width:70%; margin: 20px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{clienteMB.clientes}" scrollable="true"
-			scrollHeight="400">
+			scrollHeight="200">
 			<p:column headerText="Nome">
 				<p:outputLabel value="#{p.nome}" />
 			</p:column>
@@ -32,6 +32,12 @@
 
 			<p:column headerText="Telefone">
 				<p:outputLabel value="#{p.telefone}" />
+			</p:column>
+			
+			<p:column headerText="Data Nascimento" width="140">
+				<p:outputLabel value="#{p.dataNasc}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:outputLabel>
 			</p:column>
 
 			<p:column width="80">
@@ -60,7 +66,9 @@
 				<h:outputText value="Telefone: " />
 				<p:inputText value="#{clienteMB.cliente.telefone}" />
 
-
+				<h:outputLabel for="dataNasc" value="Data Nascimento:" />
+				<p:datePicker id="dataNasc" value="#{clienteMB.cliente.dataNasc}"
+					showIcon="true" /> 
 
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"
 					action="#{clienteMB.clientesave}" style="margin-right:20px;" />

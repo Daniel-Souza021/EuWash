@@ -2,9 +2,12 @@ package unoesc.edu.euwash.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +25,11 @@ public class Servico {
 	private String categoria;
 	
 
-
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_empresa")
+	Empresa empresa;
+	
+	
 	
 	public int getId() {
 		return id;
@@ -55,6 +62,16 @@ public class Servico {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+	
+	
 	
 	
 }

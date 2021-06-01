@@ -12,7 +12,7 @@
 <h:head>
 	<h:form name="breadCrump">
 		<p:breadCrumb> 
-			<p:menuitem value="Categories"/>
+			<p:menuitem value="Categories" url="index.xhtml"/>
 			<p:menuitem value="Serviço"/>
 		</p:breadCrumb>
 	</h:form>
@@ -21,7 +21,7 @@
 
 	<p:panel style="width:70%; margin: 20px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{servicoMB.servicos}" scrollable="true"
-			scrollHeight="400">
+			scrollHeight="200">
 			<p:column headerText="Descrição">
 				<p:outputLabel value="#{p.descricao}" />
 			</p:column>
