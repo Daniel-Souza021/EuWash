@@ -1,0 +1,79 @@
+package unoesc.edu.euwash.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "agendamentos")
+public class Agendamento {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pk_agendamentos")
+	private int id;
+	
+	@Column(name = "data_agendamento")
+	private Date dataAgendamento;
+	
+	@Column(name = "data_inicio")
+	private Date dataInicio;
+	
+	@Column(name = "data_final")
+	private Date dataFinal;
+	
+	@OneToMany(mappedBy = "agendamento", fetch = FetchType.EAGER)
+	List<Servico> servicos;
+
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getDataAgendamento() {
+		return dataAgendamento;
+	}
+
+	public void setDataAgendamento(Date dataAgendamento) {
+		this.dataAgendamento = dataAgendamento;
+	}
+
+	public Date getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Date getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(Date dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
+	public List<Servico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+	
+	
+	
+}
+

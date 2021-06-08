@@ -1,5 +1,7 @@
 package unoesc.edu.euwash.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,11 +25,20 @@ public class Servico {
 	private String preco;
 	@Column
 	private String categoria;
+	@Column(name = "busca_entrega")
+	private Boolean buscaEntrega;
+	@Column(name = "tempo_medio")
+	private Date tempoMedio;
+	@Column
+	private Boolean disponibilidade;
 	
-
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_empresa")
 	Empresa empresa;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_agendamento")
+	Agendamento agendamento;
 	
 	
 	
@@ -70,8 +81,38 @@ public class Servico {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	
-	
+
+	public Boolean getBuscaEntrega() {
+		return buscaEntrega;
+	}
+
+	public void setBuscaEntrega(Boolean buscaEntrega) {
+		this.buscaEntrega = buscaEntrega;
+	}
+
+	public Date getTempoMedio() {
+		return tempoMedio;
+	}
+
+	public void setTempoMedio(Date tempoMedio) {
+		this.tempoMedio = tempoMedio;
+	}
+
+	public Boolean getDisponibilidade() {
+		return disponibilidade;
+	}
+
+	public void setDisponibilidade(Boolean disponibilidade) {
+		this.disponibilidade = disponibilidade;
+	}
+
+	public Agendamento getAgendamento() {
+		return agendamento;
+	}
+
+	public void setAgendamento(Agendamento agendamento) {
+		this.agendamento = agendamento;
+	}
 	
 	
 }

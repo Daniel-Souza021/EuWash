@@ -19,7 +19,6 @@ public class Empresa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pk_empresas")
-
 	private int id;
 	@Column(name = "razao_social")
 	private String razaoSocial;
@@ -27,6 +26,19 @@ public class Empresa {
 	private String nomeFantasia;
 	@Column
 	private String cnpj;
+	@Column
+	private String telefone;
+	@Column
+	private int numero;
+	@Column
+	private String rua;
+	@Column
+	private String bairro;
+	@Column
+	private String cidade;
+	@Column
+	private String email;
+
 
 	@OneToMany(mappedBy = "empresa", fetch = FetchType.EAGER)
 	List<Servico> servicos;
@@ -74,7 +86,54 @@ public class Empresa {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	
 }
