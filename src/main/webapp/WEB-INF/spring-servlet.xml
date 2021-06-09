@@ -60,6 +60,8 @@
  	<bean id="ServicoDAO" class="unoesc.edu.euwash.DAO.ServicoDAOImpl"></bean>
  	<bean id="ClienteDAO" class="unoesc.edu.euwash.DAO.ClienteDAOImpl"></bean>
  	<bean id="AgendamentoDAO" class="unoesc.edu.euwash.DAO.AgendamentoDAOImpl"></bean>
+    <bean id="UsuarioDAO" class="unoesc.edu.euwash.DAO.UsuarioDAOImpl"></bean>
+    <bean id="GrupoPermissaoDAO" class="unoesc.edu.euwash.DAO.GrupoPermissaoDAOImpl"></bean>
     
     <tx:annotation-driven />
     <bean id="transactionManager"  class="org.springframework.orm.hibernate5.HibernateTransactionManager">

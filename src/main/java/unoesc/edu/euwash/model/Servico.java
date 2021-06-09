@@ -41,7 +41,6 @@ public class Servico {
 	Agendamento agendamento;
 	
 	
-	
 	public int getId() {
 		return id;
 	}

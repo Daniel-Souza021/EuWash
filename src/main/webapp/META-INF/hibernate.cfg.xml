@@ -9,5 +9,7 @@
         <mapping class="unoesc.edu.euwash.model.Servico"></mapping>
         <mapping class="unoesc.edu.euwash.model.Cliente"></mapping>
         <mapping class="unoesc.edu.euwash.model.Agendamento"></mapping>
+        <mapping class="unoesc.edu.euwash.model.Usuario"></mapping>
+        <mapping class="unoesc.edu.euwash.model.GrupoPermissao"></mapping>
     </session-factory>
 </hibernate-configuration>

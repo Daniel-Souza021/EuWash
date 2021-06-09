@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "agendamentos")
 public class Agendamento {
@@ -20,17 +22,21 @@ public class Agendamento {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_pk_agendamentos")
 	private int id;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "data_agendamento")
 	private Date dataAgendamento;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "data_inicio")
 	private Date dataInicio;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "data_final")
 	private Date dataFinal;
 	
 	@OneToMany(mappedBy = "agendamento", fetch = FetchType.EAGER)
 	List<Servico> servicos;
+	
 
 	
 	public int getId() {
@@ -72,8 +78,7 @@ public class Agendamento {
 	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
 	}
-	
-	
+
 	
 }
 
