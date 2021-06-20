@@ -34,10 +34,11 @@ public class Agendamento {
 	@Column(name = "data_final")
 	private Date dataFinal;
 	
-	@OneToMany(mappedBy = "agendamento", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "agendamento")
 	List<Servico> servicos;
 	
-
+	@OneToMany(mappedBy = "agendamento")
+	List<Cliente> clientes;
 	
 	public int getId() {
 		return id;
@@ -78,6 +79,16 @@ public class Agendamento {
 	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
 	}
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+	
+	
 
 	
 }

@@ -1,6 +1,7 @@
 package unoesc.edu.euwash.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +41,9 @@ public class Servico {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_agendamento")
 	Agendamento agendamento;
+	
+	@OneToMany(mappedBy = "servico")
+	List<Usuario> usuarios;
 	
 	
 	public int getId() {
@@ -112,6 +117,16 @@ public class Servico {
 	public void setAgendamento(Agendamento agendamento) {
 		this.agendamento = agendamento;
 	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
+	
 	
 	
 }

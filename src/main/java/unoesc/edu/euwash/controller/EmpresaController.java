@@ -19,7 +19,7 @@ public class EmpresaController {
 	private EmpresaDAO empresaDao;
 	
 	private Empresa empresa = new Empresa();
-	private List<Empresa> empresas; 
+	private List<Empresa> empresas = null; 
 	
 	
 	public void empresasave() {
@@ -62,8 +62,8 @@ public class EmpresaController {
 	}
 
 	public List<Empresa> getEmpresas() {
-		this.empresas = empresaDao.getEmpresas();
-		return empresas;
+		this.empresas = this.empresaDao.getEmpresas();
+		return this.empresas;
 	}
 
 	public void setEmpresas(List<Empresa> empresas) {

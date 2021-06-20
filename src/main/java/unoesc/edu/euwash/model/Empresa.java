@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 
@@ -42,7 +44,11 @@ public class Empresa {
 
 	@OneToMany(mappedBy = "empresa", fetch = FetchType.EAGER)
 	List<Servico> servicos;
-
+	
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "empresa")
+	@PrimaryKeyJoinColumn
+	Usuario usuario;
+	
 	public Empresa() {
 	this.servicos = new LinkedList<Servico>();
 	}
