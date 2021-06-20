@@ -7,8 +7,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
-<h:body>
+<h:outputStylesheet library="css" name="principal.css"/> <!-- inserindo o CSS -->
+<h:body style="background-color:#87CEFA;">
 <h:head>
 	<h:form name="breadCrump">
 		<p:breadCrumb> 
@@ -17,18 +17,19 @@
 		</p:breadCrumb>
 	</h:form>
 </h:head>
+
 	<p:panel style="width:70%; margin: 20px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{empresaMB.empresas}" scrollable="true"
 			scrollHeight="200">
-			<p:column headerText="Razão Social">
+			<p:column headerText="Razão Social" >
 				<p:outputLabel value="#{p.razaoSocial}" />
 			</p:column>
 
-			<p:column headerText="Nome Fantasia">
+			<p:column headerText="Nome Fantasia" >
 				<p:outputLabel value="#{p.nomeFantasia}" />
 			</p:column>
 
-			<p:column headerText="CNPJ">
+			<p:column headerText="CNPJ" >
 				<p:outputLabel value="#{p.cnpj}" />
 			</p:column>
 
@@ -36,6 +37,12 @@
 				<h:form>
 					<p:commandButton icon="pi pi-pencil"
 						action="#{empresaMB.edit(p.id)}" update="panelCad" />
+				</h:form>
+			</p:column>
+			<p:column width="80">
+				<h:form>
+					<p:commandButton icon="pi pi-times"
+						action="#{empresaMB.delete(p.id)}" update="panelCad" />
 				</h:form>
 			</p:column>
 		</p:dataTable>
@@ -52,12 +59,11 @@
 				<p:inputText value="#{empresaMB.empresa.razaoSocial}" required="true"
 					label="Nome" />
 
-				<h:outputText value="Nome Fantasia: " />
+				<h:outputText value="Nome Fantasia: "/>
 				<p:inputText value="#{empresaMB.empresa.nomeFantasia}" />
 
 				<h:outputText value="CNPJ: " />
 				<p:inputText value="#{empresaMB.empresa.cnpj}" />
-
 
 
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"

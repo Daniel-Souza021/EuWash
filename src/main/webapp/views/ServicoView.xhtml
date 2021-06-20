@@ -8,7 +8,8 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<h:body>
+<h:outputStylesheet library="css" name="principal.css"/> <!-- inserindo o CSS -->
+<h:body style="background-color:#87CEFA;">
 <h:head>
 	<h:form name="breadCrump">
 		<p:breadCrumb> 
@@ -38,6 +39,12 @@
 				<h:form>
 					<p:commandButton icon="pi pi-pencil"
 						action="#{servicoMB.edit(p.id)}" update="panelCad" />
+				</h:form>
+			</p:column>
+			<p:column width="80">
+				<h:form>
+					<p:button icon="pi pi-times" 
+						action="#{servicoMB.delete(p.id)}" update="panelCad" />
 				</h:form>
 			</p:column>
 		</p:dataTable>
