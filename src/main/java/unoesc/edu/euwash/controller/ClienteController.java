@@ -61,8 +61,8 @@ public class ClienteController {
 
 
 	public List<Cliente> getClientes() {
-		this.clientes = clienteDao.getClientes();
-		return clientes;
+		this.clientes = this.clienteDao.getClientes();
+		return this.clientes;
 	}
 
 

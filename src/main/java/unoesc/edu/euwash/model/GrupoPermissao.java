@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,11 @@ public class GrupoPermissao {
 	@Column
 	private int nivel;
 	
+	@OneToOne
+	@MapsId
+	@JoinColumn(name = "id_usuario")
+	Usuario usuario;
+
 	
 	public int getId() {
 		return id;
@@ -39,6 +47,17 @@ public class GrupoPermissao {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	
+	
+	
 	
 	
 }

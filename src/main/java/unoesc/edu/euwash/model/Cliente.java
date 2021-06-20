@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,7 +30,7 @@ public class Cliente{
 		@Column
 		private String sobrenome;
 		@DateTimeFormat(pattern = "dd/MM/yyyy")
-		private Date dataNasc;
+		private Date data_nascimento;
 		@Column
 		private String telefone;
 		@Column
@@ -46,6 +49,10 @@ public class Cliente{
 		@ManyToOne(fetch = FetchType.EAGER)
 		@JoinColumn(name = "id_agendamento")
 		Agendamento agendamento;
+
+		@OneToOne(fetch = FetchType.EAGER, mappedBy = "cliente")
+		@PrimaryKeyJoinColumn
+		Usuario usuario;
 		
 		public int getId() {
 			return id;
@@ -72,14 +79,15 @@ public class Cliente{
 		}
 
 		
-		public Date getDataNasc() {
-			return dataNasc;
+
+
+		public Date getData_nascimento() {
+			return data_nascimento;
 		}
 
-		public void setDataNasc(Date dataNasc) {
-			this.dataNasc = dataNasc;
+		public void setData_nascimento(Date data_nascimento) {
+			this.data_nascimento = data_nascimento;
 		}
-
 
 		public String getTelefone() {
 			return telefone;

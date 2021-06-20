@@ -35,11 +35,6 @@
 				<p:outputLabel value="#{p.telefone}" />
 			</p:column>
 			
-			<p:column headerText="Data Nascimento" width="140">
-				<p:outputLabel value="#{p.dataNasc}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</p:outputLabel>
-			</p:column>
 
 			<p:column width="80">
 				<h:form>
@@ -73,9 +68,6 @@
 				<h:outputText value="Telefone: " />
 				<p:inputText value="#{clienteMB.cliente.telefone}" />
 
-				<h:outputLabel for="dataNasc" value="Data Nascimento:" />
-				<p:datePicker id="dataNasc" value="#{clienteMB.cliente.dataNasc}"
-					showIcon="true" /> 
 
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"
 					action="#{clienteMB.clientesave}" style="margin-right:20px;" />
