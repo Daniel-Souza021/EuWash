@@ -34,6 +34,20 @@
 			<p:column headerText="Categoria">
 				<p:outputLabel value="#{p.categoria}" />
 			</p:column>
+			
+			<p:column headerText="Busca e entrega">
+				<p:outputLabel value="#{p.buscaEntrega}" />
+			</p:column>
+			
+			<p:column headerText="Tempo medio" width="140">
+				<p:outputLabel value="#{p.tempoMedio}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:outputLabel>
+			</p:column>
+			
+			<p:column headerText="disponibilidade">
+				<p:outputLabel value="#{p.disponibilidade}" />
+			</p:column>
 
 			<p:column width="80">
 				<h:form>
@@ -66,9 +80,17 @@
 
 				<h:outputText value="categoria: " />
 				<p:inputText value="#{servicoMB.servico.categoria}" />
-
-
-
+				
+				<h:outputText value="Busca e entrega: " />
+				<p:inputText value="#{servicoMB.servico.buscaEntrega}" />
+				
+				<h:outputLabel for="tempoMedio" value="Tempo medio:" />
+				<p:datePicker id="tempoMedio" value="#{servicoMB.servico.tempoMedio}"
+					showIcon="true" /> 
+				
+				<h:outputText value="Disponibilidade: " />
+				<p:inputText value="#{servicoMB.servico.disponibilidade}" />
+				
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"
 					action="#{servicoMB.servicosave}" style="margin-right:20px;" />
 

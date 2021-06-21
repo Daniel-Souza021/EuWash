@@ -39,6 +39,14 @@
 				</p:outputLabel>
 			</p:column>
 
+			<p:column headerText="Servico">
+					<h:outputText value="#{a.servico.nome}" />
+				</p:column>
+				
+			<p:column headerText="Cliente">
+					<h:outputText value="#{a.cliente.nome}" />
+				</p:column>
+			
 			<p:column width="80">
 				<h:form>
 					<p:commandButton icon="pi pi-pencil"
@@ -72,6 +80,22 @@
 					<h:outputLabel for="dataFinal" value="Data Final:" />
 				<p:datePicker id="dataFinal" value="#{agendamentoMB.agendamento.dataFinal}"
 					showIcon="true" /> 
+					
+					
+					<p:outputLabel for="@next" value="Servico:" />
+				<p:selectOneMenu id="servico" value="#{agendamentoMB.agendamento.servico}"
+					converter="servicoconverter" style="width:125px">
+					<f:selectItems value="#{agendamentoMB.Servicos}" var="pes"
+						itemLabel="#{pes.nome}" itemValue="#{pes}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="@next" value="Cliente:" />
+				<p:selectOneMenu id="cliente" value="#{agendamentoMB.agendamento.cliente}"
+					converter="clienteconverter" style="width:125px">
+					<f:selectItems value="#{agendamentoMB.Cliente}" var="pes"
+						itemLabel="#{pes.nome}" itemValue="#{pes}" />
+				</p:selectOneMenu>
+
 
 				   <p:button value="Salvar" styleClass="ui-button-outlined" icon="ui-icon-disk" update="panel panelCad"
 					action="#{agendamentoMB.agendamentosave}" style="margin-right:20px;" />

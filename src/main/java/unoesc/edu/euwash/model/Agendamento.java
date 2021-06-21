@@ -35,7 +35,7 @@ public class Agendamento {
 	private Date dataFinal;
 	
 	@OneToMany(mappedBy = "agendamento")
-	List<Servico> servicos;
+	List<Servico> servico;
 	
 	@OneToMany(mappedBy = "agendamento")
 	List<Cliente> clientes;
@@ -73,11 +73,11 @@ public class Agendamento {
 	}
 
 	public List<Servico> getServicos() {
-		return servicos;
+		return servico;
 	}
 
 	public void setServicos(List<Servico> servicos) {
-		this.servicos = servicos;
+		this.servico = servicos;
 	}
 
 	public List<Cliente> getClientes() {

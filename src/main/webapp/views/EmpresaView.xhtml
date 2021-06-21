@@ -32,6 +32,30 @@
 			<p:column headerText="CNPJ" >
 				<p:outputLabel value="#{p.cnpj}" />
 			</p:column>
+			
+			<p:column headerText="Telefone" >
+				<p:outputLabel value="#{p.telefone}" />
+			</p:column>
+			
+			<p:column headerText="Numero" >
+				<p:outputLabel value="#{p.numero}" />
+			</p:column>
+			
+			<p:column headerText="Rua" >
+				<p:outputLabel value="#{p.rua}" />
+			</p:column>
+			
+			<p:column headerText="Bairro" >
+				<p:outputLabel value="#{p.bairro}" />
+			</p:column>
+			
+			<p:column headerText="Cidade" >
+				<p:outputLabel value="#{p.cidade}" />
+			</p:column>
+			
+			<p:column headerText="Email" >
+				<p:outputLabel value="#{p.email}" />
+			</p:column>
 
 			<p:column width="80">
 				<h:form>
@@ -57,15 +81,32 @@
 
 				<h:outputText value="Razão Social: " />
 				<p:inputText value="#{empresaMB.empresa.razaoSocial}" required="true"
-					label="Nome" />
+				label="Nome" />
 
 				<h:outputText value="Nome Fantasia: "/>
 				<p:inputText value="#{empresaMB.empresa.nomeFantasia}" />
 
 				<h:outputText value="CNPJ: " />
 				<p:inputText value="#{empresaMB.empresa.cnpj}" />
+				
+				<h:outputText value="Telefone: " />
+				<p:inputText value="#{empresaMB.empresa.telefone}" />
+				
+				<h:outputText value="Numero: " />
+				<p:inputText value="#{empresaMB.empresa.numero}" />
+				
+				<h:outputText value="Rua: " />
+				<p:inputText value="#{empresaMB.empresa.rua}" />
+				
+				<h:outputText value="Bairro: " />
+				<p:inputText value="#{empresaMB.empresa.bairro}" />
+				
+				<h:outputText value="Cidade: " />
+				<p:inputText value="#{empresaMB.empresa.numero}" />
 
-
+				<h:outputText value="E-mail: " />
+				<p:inputText value="#{empresaMB.empresa.email}" />
+				
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"
 					action="#{empresaMB.empresasave}" style="margin-right:20px;" />
 

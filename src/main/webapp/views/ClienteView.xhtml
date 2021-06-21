@@ -20,7 +20,7 @@
 </h:head>
 
 
-	<p:panel style="width:70%; margin: 20px auto;" id="panel"  header="Data">
+	<p:panel style="width:95%; margin: 50px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{clienteMB.clientes}" scrollable="true"
 			scrollHeight="200">
 			<p:column headerText="Nome">
@@ -30,11 +30,40 @@
 			<p:column headerText="Sobrenome">
 				<p:outputLabel value="#{p.sobrenome}" />
 			</p:column>
+			
+			<p:column headerText="Data Nasc" width="140">
+			<p:outputLabel value="#{p.data_nascimento}">
+			<f:convertDateTime pattern="dd/MM/yyyy" />
+			</p:outputLabel>
+			</p:column>
 
 			<p:column headerText="Telefone">
 				<p:outputLabel value="#{p.telefone}" />
 			</p:column>
 			
+			<p:column headerText="CPF">
+				<p:outputLabel value="#{p.cpf}" />
+			</p:column>
+			
+			<p:column headerText="Numero">
+				<p:outputLabel value="#{p.numero}" />
+			</p:column>
+			
+			<p:column headerText="Rua">
+				<p:outputLabel value="#{p.rua}" />
+			</p:column>
+			
+			<p:column headerText="Bairro">
+				<p:outputLabel value="#{p.bairro}" />
+			</p:column>
+			
+			<p:column headerText="Cidade">
+				<p:outputLabel value="#{p.cidade}" />
+			</p:column>
+			
+			<p:column headerText="Email">
+				<p:outputLabel value="#{p.email}" />
+			</p:column>
 
 			<p:column width="80">
 				<h:form>
@@ -64,9 +93,31 @@
 
 				<h:outputText value="Sobrenome: " />
 				<p:inputText value="#{clienteMB.cliente.sobrenome}" />
+				
+				<h:outputLabel for="dataNasc" value="Data nascimnto:" />
+				<p:datePicker id="dataNasc" value="#{clienteMB.data_nascimento}"
+					showIcon="true" /> 
 
 				<h:outputText value="Telefone: " />
 				<p:inputText value="#{clienteMB.cliente.telefone}" />
+				
+				<h:outputText value="CPF: " />
+				<p:inputText value="#{clienteMB.cliente.cpf}" />
+				
+				<h:outputText value="Numero: " />
+				<p:inputText value="#{clienteMB.cliente.numero}" />
+				
+				<h:outputText value="Rua: " />
+				<p:inputText value="#{clienteMB.cliente.rua}" />
+				
+				<h:outputText value="Bairro: " />
+				<p:inputText value="#{clienteMB.cliente.bairro}" />
+				
+				<h:outputText value="Cidade: " />
+				<p:inputText value="#{clienteMB.cliente.cidade}" />
+				
+				<h:outputText value="E-mail: " />
+				<p:inputText value="#{clienteMB.cliente.email}" />
 
 
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"
