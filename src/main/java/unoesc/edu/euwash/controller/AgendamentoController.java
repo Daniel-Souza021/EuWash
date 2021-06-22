@@ -20,7 +20,6 @@ public class AgendamentoController {
 	private List<Agendamento> agendamentos;
 
 	public void agendamentosave() {
-
 		if (agendamento.getId() == 0) {
 			this.agendamentoDao.insertAgendamento(agendamento);
 		} else {

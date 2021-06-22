@@ -62,7 +62,8 @@ public class EmpresaController {
 	}
 
 	public List<Empresa> getEmpresas() {
-		this.empresas = this.empresaDao.getEmpresas();
+		if (this.empresas == null)
+			this.empresas = this.empresaDao.getEmpresas();
 		return this.empresas;
 	}
 

@@ -18,7 +18,7 @@
 	</h:form>
 </h:head>
 
-	<p:panel style="width:70%; margin: 20px auto;" id="panel"  header="Data">
+	<p:panel style="width:95%; margin: 20px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{empresaMB.empresas}" scrollable="true"
 			scrollHeight="200">
 			<p:column headerText="Razão Social" >
@@ -102,7 +102,7 @@
 				<p:inputText value="#{empresaMB.empresa.bairro}" />
 				
 				<h:outputText value="Cidade: " />
-				<p:inputText value="#{empresaMB.empresa.numero}" />
+				<p:inputText value="#{empresaMB.empresa.cidade}" />
 
 				<h:outputText value="E-mail: " />
 				<p:inputText value="#{empresaMB.empresa.email}" />

@@ -1,7 +1,9 @@
 package unoesc.edu.euwash.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -46,13 +49,13 @@ public class Cliente{
 		@Column
 		private String email;
 		
-		@ManyToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name = "id_agendamento")
-		Agendamento agendamento;
+		@OneToMany(mappedBy = "cliente")
+		List<Agendamento> agendamentos;
 
-		@OneToOne(fetch = FetchType.EAGER, mappedBy = "cliente")
-		@PrimaryKeyJoinColumn
-		Usuario usuario;
+		@OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL,
+				fetch = FetchType.LAZY)
+		private Usuario usuario;
+		
 		
 		public int getId() {
 			return id;
@@ -145,13 +148,23 @@ public class Cliente{
 			this.email = email;
 		}
 
-		public Agendamento getAgendamento() {
-			return agendamento;
+		public List<Agendamento> getAgendamentos() {
+			return agendamentos;
 		}
 
-		public void setAgendamento(Agendamento agendamento) {
-			this.agendamento = agendamento;
+		public void setAgendamentos(List<Agendamento> agendamentos) {
+			this.agendamentos = agendamentos;
 		}
+
+		public Usuario getUsuario() {
+			return usuario;
+		}
+
+		public void setUsuario(Usuario usuario) {
+			this.usuario = usuario;
+		}
+
+	
 		
 		
 		

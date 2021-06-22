@@ -20,7 +20,7 @@
 </h:head>
 
 
-	<p:panel style="width:95%; margin: 50px auto;" id="panel"  header="Data">
+	<p:panel style="width:100%; margin: 50px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{clienteMB.clientes}" scrollable="true"
 			scrollHeight="200">
 			<p:column headerText="Nome">
@@ -95,7 +95,7 @@
 				<p:inputText value="#{clienteMB.cliente.sobrenome}" />
 				
 				<h:outputLabel for="dataNasc" value="Data nascimnto:" />
-				<p:datePicker id="dataNasc" value="#{clienteMB.data_nascimento}"
+				<p:datePicker id="dataNasc" value="#{clienteMB.cliente.data_nascimento}"
 					showIcon="true" /> 
 
 				<h:outputText value="Telefone: " />

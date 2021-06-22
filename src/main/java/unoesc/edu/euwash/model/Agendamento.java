@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,11 +36,14 @@ public class Agendamento {
 	@Column(name = "data_final")
 	private Date dataFinal;
 	
-	@OneToMany(mappedBy = "agendamento")
-	List<Servico> servico;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_servico")
+	Servico servico;
 	
-	@OneToMany(mappedBy = "agendamento")
-	List<Cliente> clientes;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_cliente")
+	Cliente cliente;
+	
 	
 	public int getId() {
 		return id;
@@ -72,23 +77,21 @@ public class Agendamento {
 		this.dataFinal = dataFinal;
 	}
 
-	public List<Servico> getServicos() {
+	public Servico getServico() {
 		return servico;
 	}
 
-	public void setServicos(List<Servico> servicos) {
-		this.servico = servicos;
+	public void setServico(Servico servico) {
+		this.servico = servico;
 	}
 
-	public List<Cliente> getClientes() {
-		return clientes;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	
-	
 
 	
 }

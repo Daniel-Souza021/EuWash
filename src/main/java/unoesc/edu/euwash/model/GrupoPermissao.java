@@ -2,6 +2,7 @@ package unoesc.edu.euwash.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,10 +24,10 @@ public class GrupoPermissao {
 	@Column
 	private int nivel;
 	
-	@OneToOne
-	@MapsId
-	@JoinColumn(name = "id_usuario")
-	Usuario usuario;
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
 
 	
 	public int getId() {

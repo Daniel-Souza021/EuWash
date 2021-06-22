@@ -3,6 +3,7 @@ package unoesc.edu.euwash.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,7 @@ public class Servico {
 	@Column
 	private String descricao;
 	@Column
-	private String preco;
+	private Float preco;
 	@Column
 	private String categoria;
 	@Column(name = "busca_entrega")
@@ -34,13 +35,13 @@ public class Servico {
 	@Column
 	private Boolean disponibilidade;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_empresa")
 	Empresa empresa;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_agendamento")
-	Agendamento agendamento;
+	@OneToMany(mappedBy = "servico")
+	List<Agendamento> agendamentos;
+
 	
 	@OneToMany(mappedBy = "servico")
 	List<Usuario> usuarios;
@@ -62,11 +63,11 @@ public class Servico {
 		this.descricao = descricao;
 	}
 	
-	public String getPreco() {
+	public Float getPreco() {
 		return preco;
 	}
 	
-	public void setPreco(String preco) {
+	public void setPreco(Float preco) {
 		this.preco = preco;
 	}
 	
@@ -110,12 +111,15 @@ public class Servico {
 		this.disponibilidade = disponibilidade;
 	}
 
-	public Agendamento getAgendamento() {
-		return agendamento;
+	
+	
+
+	public List<Agendamento> getAgendamentos() {
+		return agendamentos;
 	}
 
-	public void setAgendamento(Agendamento agendamento) {
-		this.agendamento = agendamento;
+	public void setAgendamentos(List<Agendamento> agendamentos) {
+		this.agendamentos = agendamentos;
 	}
 
 	public List<Usuario> getUsuarios() {

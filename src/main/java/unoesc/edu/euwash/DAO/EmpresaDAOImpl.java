@@ -21,8 +21,7 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 	@Transactional
 	public List<Empresa> getEmpresas() {
 		Session session = sessionFactory.getCurrentSession();
-		List <Empresa> empresas = (List) session.createQuery("FROM Empresa").list();
-		
+		List<Empresa> empresas = (List) session.createQuery("FROM Empresa").list();
 		return empresas;
 	}
 

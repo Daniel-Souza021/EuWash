@@ -8,7 +8,6 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-<h:outputStylesheet library="css" name="principal.css"/> <!-- inserindo o CSS -->
 <h:body style="background-color:#d9d9d9;">
 <h:head>
 	<h:form name="breadCrump">
@@ -40,7 +39,7 @@
 			</p:column>
 
 			<p:column headerText="Servico">
-					<h:outputText value="#{a.servico.nome}" />
+					<h:outputText value="#{a.servico.categoria}" />
 				</p:column>
 				
 			<p:column headerText="Cliente">
@@ -85,15 +84,15 @@
 					<p:outputLabel for="@next" value="Servico:" />
 				<p:selectOneMenu id="servico" value="#{agendamentoMB.agendamento.servico}"
 					converter="servicoconverter" style="width:125px">
-					<f:selectItems value="#{agendamentoMB.Servicos}" var="pes"
-						itemLabel="#{pes.nome}" itemValue="#{pes}" />
+					<f:selectItems value="#{servicoMB.servicos}" var="ser"
+						itemLabel="#{ser.descricao}" itemValue="#{ser}" />
 				</p:selectOneMenu>
 				
 				<p:outputLabel for="@next" value="Cliente:" />
 				<p:selectOneMenu id="cliente" value="#{agendamentoMB.agendamento.cliente}"
 					converter="clienteconverter" style="width:125px">
-					<f:selectItems value="#{agendamentoMB.Cliente}" var="pes"
-						itemLabel="#{pes.nome}" itemValue="#{pes}" />
+					<f:selectItems value="#{clienteMB.clientes}" var="cli"
+						itemLabel="#{cli.nome}" itemValue="#{cli}" />
 				</p:selectOneMenu>
 
 

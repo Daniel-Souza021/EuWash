@@ -1,5 +1,6 @@
 package unoesc.edu.euwash.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,23 +26,21 @@ public class Usuario {
 	@Column
 	private String senha;
 	
-	@OneToOne
-	@MapsId
-	@JoinColumn(name = "id_cliente")
-	Cliente cliente;
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 	
-	@OneToOne
-	@MapsId
-	@JoinColumn(name = "id_empresa")
-	Empresa empresa;
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_empresa")
+    private Empresa empresa;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_servico")
 	Servico servico;
 	
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "usuario")
-	@PrimaryKeyJoinColumn
-	GrupoPermissao grupoPermissao;
+	@OneToOne(mappedBy = "usuario",
+			fetch = FetchType.LAZY)
+	private GrupoPermissao grupoPermissao;
 	
 	public int getId() {
 		return id;

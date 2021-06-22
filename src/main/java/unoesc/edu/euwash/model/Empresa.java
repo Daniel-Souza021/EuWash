@@ -3,6 +3,7 @@ package unoesc.edu.euwash.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 
@@ -42,12 +42,14 @@ public class Empresa {
 	private String email;
 
 
-	@OneToMany(mappedBy = "empresa", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "empresa", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	List<Servico> servicos;
 	
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "empresa")
-	@PrimaryKeyJoinColumn
-	Usuario usuario;
+    @OneToOne(mappedBy = "empresa", cascade = CascadeType.ALL,
+              fetch = FetchType.LAZY)
+    private Usuario usuario;
+    
+    
 	
 	public Empresa() {
 	this.servicos = new LinkedList<Servico>();
