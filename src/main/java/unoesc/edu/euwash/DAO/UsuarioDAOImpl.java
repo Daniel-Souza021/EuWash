@@ -56,6 +56,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(usuario);
 	}
+
+	@Override
+	@Transactional
+	public Usuario validaLogin(String login, String senha) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Usuario p = (Usuario) session.createQuery("from Usuario where login=:login and senha=:pwd")
+								.setParameter("login", login)
+								.setParameter("pwd", senha)
+								.uniqueResult();
+		return p;
+	}
 	
 	
 	

@@ -11,5 +11,6 @@ public interface UsuarioDAO {
 	void insertUsuario(Usuario usuario);
 	void updateUsuario(Usuario usuario);
 	void deleteUsuario(Usuario usuario);
+	Usuario validaLogin(String login, String senha);
 	
 }
