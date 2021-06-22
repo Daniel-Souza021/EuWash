@@ -7,7 +7,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:outputStylesheet library="css" name="principal.css"/> <!-- inserindo o CSS -->
 <h:body style="background-color:#d9d9d9;">
 <h:head>
 	<h:form name="breadCrump">
@@ -18,7 +17,7 @@
 	</h:form>
 </h:head>
 
-	<p:panel style="width:95%; margin: 20px auto;" id="panel"  header="Data">
+	<p:panel style="width:95%; margin: 20px auto;" id="panel" header="Data">
 		<p:dataTable var="p" value="#{empresaMB.empresas}" scrollable="true"
 			scrollHeight="200">
 			<p:column headerText="Razão Social" >
@@ -53,7 +52,7 @@
 				<p:outputLabel value="#{p.cidade}" />
 			</p:column>
 			
-			<p:column headerText="Email" >
+			<p:column headerText="E-mail" >
 				<p:outputLabel value="#{p.email}" />
 			</p:column>
 

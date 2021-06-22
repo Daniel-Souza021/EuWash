@@ -7,7 +7,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
 <h:body style="background-color:#d9d9d9;">
 <h:head>
 	<h:form name="breadCrump">
@@ -17,7 +16,6 @@
 		</p:breadCrumb>
 	</h:form>
 </h:head>
-
 
 	<p:panel style="width:100%; margin: 50px auto;" id="panel"  header="Data">
 		<p:dataTable var="p" value="#{clienteMB.clientes}" scrollable="true"
@@ -73,7 +71,7 @@
 			<p:column width="80">
 				<h:form>
 					<p:commandButton icon="pi pi-times"
-						action="#{clienteMB.delete(p.id)}" update="panelCad" />
+						action="#{clienteMB.delete(p.id)}" update="panel" />
 				</h:form>
 			</p:column>
 		</p:dataTable>
@@ -93,7 +91,7 @@
 				<h:outputText value="Sobrenome: " />
 				<p:inputText value="#{clienteMB.cliente.sobrenome}" />
 				
-				<h:outputLabel for="dataNasc" value="Data nascimnto:" />
+				<h:outputLabel for="dataNasc" value="Data nascimento:" />
 				<p:datePicker id="dataNasc" value="#{clienteMB.cliente.data_nascimento}"
 					showIcon="true" /> 
 

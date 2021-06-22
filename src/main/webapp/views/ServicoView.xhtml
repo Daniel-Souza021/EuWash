@@ -19,7 +19,7 @@
 </h:head>
 
 
-	<p:panel style="width:95%; margin: 20px auto;" id="panel"  header="Data">
+	<p:panel style="width:95%; margin: 20px auto;" id="panel" header="Data">
 		<p:dataTable var="p" value="#{servicoMB.servicos}" scrollable="true"
 			scrollHeight="200">
 			<p:column headerText="Descrição">
@@ -38,13 +38,7 @@
 				<p:outputLabel value="#{p.buscaEntrega}" />
 			</p:column>
 			
-			<p:column headerText="Tempo medio" width="140">
-				<p:outputLabel value="#{p.tempoMedio}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</p:outputLabel>
-			</p:column>
-			
-			<p:column headerText="disponibilidade">
+			<p:column headerText="Disponibilidade">
 				<p:outputLabel value="#{p.disponibilidade}" />
 			</p:column>
 			
@@ -60,7 +54,7 @@
 			</p:column>
 			<p:column width="80">
 				<h:form>
-					<p:button icon="pi pi-times" 
+					<p:commandButton icon="pi pi-times" 
 						action="#{servicoMB.delete(p.id)}" update="panel" />
 				</h:form>
 			</p:column>
@@ -81,26 +75,15 @@
 				<h:outputText value="Preço: " />
 				<p:inputText value="#{servicoMB.servico.preco}" />
 
-				<h:outputText value="categoria: " />
+				<h:outputText value="Categoria: " />
 				<p:inputText value="#{servicoMB.servico.categoria}" />
 				
 				<h:outputText value="Busca e entrega: " />
 				<p:inputText value="#{servicoMB.servico.buscaEntrega}" />
 				
-				<h:outputLabel for="tempoMedio" value="Tempo medio:" />
-				<p:datePicker id="tempoMedio" value="#{servicoMB.servico.tempoMedio}"
-					showIcon="true" /> 
-				
 				<h:outputText value="Disponibilidade: " />
 				<p:inputText value="#{servicoMB.servico.disponibilidade}" />
-				
-				<p:outputLabel for="@next" value="Empresa:" />
-				<p:selectOneMenu id="empresa" value="#{servicoMB.servico.empresa}"
-					converter="empresaconverter" style="width:125px">
-					<f:selectItems value="#{empresaMB.empresas}" var="empresa"
-						itemLabel="#{empresa.nomeFantasia}" itemValue="#{empresa}" />
-				</p:selectOneMenu>
-				
+			
 				
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"
 					action="#{servicoMB.servicosave}" style="margin-right:20px;" />

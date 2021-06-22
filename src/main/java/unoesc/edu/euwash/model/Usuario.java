@@ -1,6 +1,5 @@
 package unoesc.edu.euwash.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,9 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -38,9 +35,7 @@ public class Usuario {
 	@JoinColumn(name = "id_servico")
 	Servico servico;
 	
-	@OneToOne(mappedBy = "usuario",
-			fetch = FetchType.LAZY)
-	private GrupoPermissao grupoPermissao;
+
 	
 	public int getId() {
 		return id;

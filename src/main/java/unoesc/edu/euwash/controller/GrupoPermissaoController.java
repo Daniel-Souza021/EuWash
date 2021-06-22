@@ -19,13 +19,14 @@ public class GrupoPermissaoController {
 	private GrupoPermissao grupoPermissao = new GrupoPermissao();
 	private List<GrupoPermissao> gruposPermissoes;
 
-	public void agendamentosave() {
+	public void grupopermissaosave() {
 
 		if (grupoPermissao.getId() == 0) {
 			this.grupoPermissaoDao.insertGrupoPermissao(grupoPermissao);
 		} else {
 			this.grupoPermissaoDao.updateGrupoPermissao(grupoPermissao);
 		}
+		this.grupoPermissao = new GrupoPermissao();
 
 	}
 
@@ -38,7 +39,7 @@ public class GrupoPermissaoController {
 
 		GrupoPermissao e = this.grupoPermissaoDao.getGrupoPermissaoById(id);
 		this.grupoPermissaoDao.deleteGrupoPermissao(e);
-
+		this.grupoPermissao = new GrupoPermissao();
 	}
 
 	public GrupoPermissaoDAO getGrupoPermissaoDao() {

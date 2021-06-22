@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+
 import unoesc.edu.euwash.DAO.ClienteDAO;
 import unoesc.edu.euwash.model.Cliente;
 
@@ -25,7 +26,7 @@ public class ClienteController {
 		} else {
 			this.clienteDao.updateCliente(cliente);
 		}
-
+		this.cliente = new Cliente();
 	}
 
 
@@ -39,6 +40,7 @@ public class ClienteController {
 
 		Cliente c = this.clienteDao.getClienteById(id);
 		this.clienteDao.deleteCliente(c);
+		this.cliente = new Cliente();
 	}
 
 	public ClienteDAO getClienteDao() {

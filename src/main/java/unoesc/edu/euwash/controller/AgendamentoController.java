@@ -20,12 +20,13 @@ public class AgendamentoController {
 	private List<Agendamento> agendamentos;
 
 	public void agendamentosave() {
+
 		if (agendamento.getId() == 0) {
 			this.agendamentoDao.insertAgendamento(agendamento);
 		} else {
 			this.agendamentoDao.updateAgendamento(agendamento);
 		}
-
+		this.agendamento = new Agendamento();
 	}
 
 	public void edit(int id) {
@@ -37,7 +38,7 @@ public class AgendamentoController {
 
 		Agendamento e = this.agendamentoDao.getAgendamentoById(id);
 		this.agendamentoDao.deleteAgendamento(e);
-
+		this.agendamento = new Agendamento();
 	}
 
 	public AgendamentoDAO getAgendamentoDao() {
@@ -57,8 +58,8 @@ public class AgendamentoController {
 	}
 
 	public List<Agendamento> getAgendamentos() {
-		this.agendamentos = agendamentoDao.getAgendamentos();
-		return agendamentos;
+		this.agendamentos = this.agendamentoDao.getAgendamentos();
+		return this.agendamentos;
 	}
 
 	public void setAgendamentos(List<Agendamento> agendamentos) {

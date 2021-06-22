@@ -26,6 +26,7 @@ public class UsuarioController {
 		} else {
 			this.usuarioDao.updateUsuario(usuario);
 		}
+		this.usuario = new Usuario();
 
 	}
 
@@ -38,7 +39,7 @@ public class UsuarioController {
 
 		Usuario e = this.usuarioDao.getUsuarioById(id);
 		this.usuarioDao.deleteUsuario(e);
-
+		this.usuario = new Usuario();
 	}
 
 	public UsuarioDAO getUsuarioDao() {

@@ -19,7 +19,7 @@ public class EmpresaController {
 	private EmpresaDAO empresaDao;
 	
 	private Empresa empresa = new Empresa();
-	private List<Empresa> empresas = null; 
+	private List<Empresa> empresas; 
 	
 	
 	public void empresasave() {
@@ -29,7 +29,8 @@ public class EmpresaController {
 		} else {
 			this.empresaDao.updateEmpresa(empresa);
 		}
-	
+		
+		this.empresa = new Empresa();
 	}
 	
 	public void edit(int id) {
@@ -41,6 +42,7 @@ public class EmpresaController {
 	
 		Empresa e = this.empresaDao.getEmpresaById(id);
 		this.empresaDao.deleteEmpresa(e);
+		this.empresa = new Empresa();
 		
 	}
 	
@@ -62,8 +64,7 @@ public class EmpresaController {
 	}
 
 	public List<Empresa> getEmpresas() {
-		if (this.empresas == null)
-			this.empresas = this.empresaDao.getEmpresas();
+		this.empresas = this.empresaDao.getEmpresas();
 		return this.empresas;
 	}
 

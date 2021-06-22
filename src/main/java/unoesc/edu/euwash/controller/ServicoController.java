@@ -27,21 +27,19 @@ public class ServicoController {
 		} else {
 			this.servicoDao.updateServico(servico);
 		}
+		this.servico = new Servico();
 	}
 	
 	
 	public void edit(int id) {
-
 		this.servico = this.servicoDao.getServicoById(id);
 
 	}
 	
-
 	public void delete(int id) {
-		
 		Servico s = this.servicoDao.getServicoById(id);
 		this.servicoDao.deleteServico(s);
-		
+		this.servico = new Servico();
 	}
 	
 	public ServicoDAO getServicoDao() {

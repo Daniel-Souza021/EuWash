@@ -1,9 +1,7 @@
 package unoesc.edu.euwash.model;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,22 +22,19 @@ public class Agendamento {
 	private int id;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "data_agendamento")
-	private Date dataAgendamento;
+	private Date data_agendamento;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "data_inicio")
-	private Date dataInicio;
+	private Date data_inicio;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "data_final")
-	private Date dataFinal;
+	private Date data_final;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "id_servico")
 	Servico servico;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	Cliente cliente;
 	
@@ -53,28 +47,30 @@ public class Agendamento {
 		this.id = id;
 	}
 
-	public Date getDataAgendamento() {
-		return dataAgendamento;
+	
+
+	public Date getData_agendamento() {
+		return data_agendamento;
 	}
 
-	public void setDataAgendamento(Date dataAgendamento) {
-		this.dataAgendamento = dataAgendamento;
+	public void setData_agendamento(Date data_agendamento) {
+		this.data_agendamento = data_agendamento;
 	}
 
-	public Date getDataInicio() {
-		return dataInicio;
+	public Date getData_inicio() {
+		return data_inicio;
 	}
 
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setData_inicio(Date data_inicio) {
+		this.data_inicio = data_inicio;
 	}
 
-	public Date getDataFinal() {
-		return dataFinal;
+	public Date getData_final() {
+		return data_final;
 	}
 
-	public void setDataFinal(Date dataFinal) {
-		this.dataFinal = dataFinal;
+	public void setData_final(Date data_final) {
+		this.data_final = data_final;
 	}
 
 	public Servico getServico() {

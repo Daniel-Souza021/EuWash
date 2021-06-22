@@ -21,19 +21,19 @@
 		<p:dataTable var="a" value="#{agendamentoMB.agendamentos}" scrollable="true"
 			scrollHeight="200">
 			<p:column headerText="Data Agendamento" width="140">
-				<p:outputLabel value="#{a.dataAgendamento}">
+				<p:outputLabel value="#{a.data_agendamento}">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</p:outputLabel>
 			</p:column>
 
-			<p:column headerText="Data Inicio" width="140">
-				<p:outputLabel value="#{a.dataInicio}">
+			<p:column headerText="Data Início" width="140">
+				<p:outputLabel value="#{a.data_inicio}">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</p:outputLabel>
 			</p:column>
 
 			<p:column headerText="Data Final" width="140">
-				<p:outputLabel value="#{a.dataFinal}">
+				<p:outputLabel value="#{a.data_final}">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</p:outputLabel>
 			</p:column>
@@ -49,13 +49,13 @@
 			<p:column width="80">
 				<h:form>
 					<p:commandButton icon="pi pi-pencil"
-						action="#{agendamentoMB.edit(p.id)}" update="panelCad" />
+						action="#{agendamentoMB.edit(a.id)}" update="panelCad" />
 				</h:form>
 			</p:column>
 			<p:column width="80">
 				<h:form>
 					<p:commandButton icon="pi pi-times"
-						action="#{agendamentoMB.delete(p.id)}" update="panelCad" />
+						action="#{agendamentoMB.delete(a.id)}" update="panel" />
 				</h:form>
 			</p:column>
 		</p:dataTable>
@@ -68,35 +68,20 @@
 			<p:growl id="growl" sticky="false" showDetail="false" />
 			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-				<h:outputLabel for="dataAgendamento" value="Data Agendamento:" />
-				<p:datePicker id="dataAgendamento" value="#{agendamentoMB.agendamento.dataAgendamento}"
+				<h:outputLabel for="dataA" value="Data Agendamento:" />
+				<p:datePicker id="dataAgendamento" value="#{agendamentoMB.agendamento.data_agendamento}"
 					showIcon="true" /> 
 					
-					<h:outputLabel for="dataInicio" value="Data Início:" />
-				<p:datePicker id="dataInicio" value="#{agendamentoMB.agendamento.dataInicio}"
+					<h:outputLabel for="dataI" value="Data Início:" />
+				<p:datePicker id="dataInicio" value="#{agendamentoMB.agendamento.data_inicio}"
 					showIcon="true" /> 
 					
-					<h:outputLabel for="dataFinal" value="Data Final:" />
-				<p:datePicker id="dataFinal" value="#{agendamentoMB.agendamento.dataFinal}"
+					<h:outputLabel for="dataF" value="Data Final:" />
+				<p:datePicker id="dataFinal" value="#{agendamentoMB.agendamento.data_final}"
 					showIcon="true" /> 
 					
 					
-					<p:outputLabel for="@next" value="Servico:" />
-				<p:selectOneMenu id="servico" value="#{agendamentoMB.agendamento.servico}"
-					converter="servicoconverter" style="width:125px">
-					<f:selectItems value="#{servicoMB.servicos}" var="ser"
-						itemLabel="#{ser.descricao}" itemValue="#{ser}" />
-				</p:selectOneMenu>
-				
-				<p:outputLabel for="@next" value="Cliente:" />
-				<p:selectOneMenu id="cliente" value="#{agendamentoMB.agendamento.cliente}"
-					converter="clienteconverter" style="width:125px">
-					<f:selectItems value="#{clienteMB.clientes}" var="cli"
-						itemLabel="#{cli.nome}" itemValue="#{cli}" />
-				</p:selectOneMenu>
-
-
-				   <p:button value="Salvar" styleClass="ui-button-outlined" icon="ui-icon-disk" update="panel panelCad"
+				 <p:commandButton value="Salvar" styleClass="ui-button-outlined" icon="ui-icon-disk" update="panel panelCad"
 					action="#{agendamentoMB.agendamentosave}" style="margin-right:20px;" />
 
 			</h:panelGrid>
