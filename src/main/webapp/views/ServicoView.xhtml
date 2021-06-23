@@ -83,8 +83,14 @@
 				
 				<h:outputText value="Disponibilidade: " />
 				<p:inputText value="#{servicoMB.servico.disponibilidade}" />
-			
-				
+
+				<p:outputLabel for="@next" value="Empresa:" />
+				<p:selectOneMenu id="empresa" value="#{servicoMB.servico.empresa}"
+					converter="empresaconverter" style="width:125px">
+					<f:selectItems value="#{empresaMB.empresas}" var="empresa"
+						itemLabel="#{empresa.nomeFantasia}" itemValue="#{empresa}" />
+				</p:selectOneMenu>
+
 				<p:commandButton value="Salvar" icon="ui-icon-disk" update="panel panelCad"
 					action="#{servicoMB.servicosave}" style="margin-right:20px;" />
 

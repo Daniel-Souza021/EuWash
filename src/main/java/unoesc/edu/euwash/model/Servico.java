@@ -80,7 +80,7 @@ public class Servico {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-
+ 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
@@ -124,6 +124,84 @@ public class Servico {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((agendamentos == null) ? 0 : agendamentos.hashCode());
+		result = prime * result + ((buscaEntrega == null) ? 0 : buscaEntrega.hashCode());
+		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((disponibilidade == null) ? 0 : disponibilidade.hashCode());
+		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((preco == null) ? 0 : preco.hashCode());
+		result = prime * result + ((tempoMedio == null) ? 0 : tempoMedio.hashCode());
+		result = prime * result + ((usuarios == null) ? 0 : usuarios.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Servico other = (Servico) obj;
+		if (agendamentos == null) {
+			if (other.agendamentos != null)
+				return false;
+		} else if (!agendamentos.equals(other.agendamentos))
+			return false;
+		if (buscaEntrega == null) {
+			if (other.buscaEntrega != null)
+				return false;
+		} else if (!buscaEntrega.equals(other.buscaEntrega))
+			return false;
+		if (categoria == null) {
+			if (other.categoria != null)
+				return false;
+		} else if (!categoria.equals(other.categoria))
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (disponibilidade == null) {
+			if (other.disponibilidade != null)
+				return false;
+		} else if (!disponibilidade.equals(other.disponibilidade))
+			return false;
+		if (empresa == null) {
+			if (other.empresa != null)
+				return false;
+		} else if (!empresa.equals(other.empresa))
+			return false;
+		if (id != other.id)
+			return false;
+		if (preco == null) {
+			if (other.preco != null)
+				return false;
+		} else if (!preco.equals(other.preco))
+			return false;
+		if (tempoMedio == null) {
+			if (other.tempoMedio != null)
+				return false;
+		} else if (!tempoMedio.equals(other.tempoMedio))
+			return false;
+		if (usuarios == null) {
+			if (other.usuarios != null)
+				return false;
+		} else if (!usuarios.equals(other.usuarios))
+			return false;
+		return true;
+	}
+	
+	
 	
 	
 	

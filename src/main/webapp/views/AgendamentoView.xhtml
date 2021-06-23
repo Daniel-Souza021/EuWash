@@ -80,6 +80,19 @@
 				<p:datePicker id="dataFinal" value="#{agendamentoMB.agendamento.data_final}"
 					showIcon="true" /> 
 					
+					<p:outputLabel for="@next" value="Servico:" />
+				<p:selectOneMenu id="servico" value="#{agendamentoMB.agendamento.servico}"
+					converter="servicoconverter" style="width:125px">
+					<f:selectItems value="#{servicoMB.servicos}" var="ser"
+						itemLabel="#{ser.descricao}" itemValue="#{ser}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="@next" value="Cliente:" />
+				<p:selectOneMenu id="cliente" value="#{agendamentoMB.agendamento.cliente}"
+					converter="clienteconverter" style="width:125px">
+					<f:selectItems value="#{clienteMB.clientes}" var="cli"
+						itemLabel="#{cli.nome}" itemValue="#{cli}" />
+				</p:selectOneMenu>
 					
 				 <p:commandButton value="Salvar" styleClass="ui-button-outlined" icon="ui-icon-disk" update="panel panelCad"
 					action="#{agendamentoMB.agendamentosave}" style="margin-right:20px;" />
